@@ -8,6 +8,7 @@ public class PickableObjects : MonoBehaviour
     // Variables para el objeto que genera el raycast
     public Camera cam;
     public Transform positionPick;
+    public Transform objectPosition;
 
     // Variables para el raycast
     public float distance;
@@ -44,13 +45,10 @@ public class PickableObjects : MonoBehaviour
         {
             if (Physics2D.Raycast(transform.position, transform.forward, distance, mask))
             {
-                pickedObject = true;
+
             }
         }
-        else
-        {
-            pickedObject = false;
-        }
+
     }
 
 

@@ -18,11 +18,7 @@ public class Objects : MonoBehaviour
 
     public void CanMove()
     {
-        if (PickableObjects.instance.pickedObject)
-        {
-            this.transform.position = PickableObjects.instance.positionPick.position;
-        }
-        else return;
+        
     }
 
 }
