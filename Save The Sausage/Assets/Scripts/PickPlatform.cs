@@ -6,6 +6,7 @@ public class PickPlatform : MonoBehaviour
 {
     public float force = 500f;
     Rigidbody2D selectedRigidbody;
+    public bool inZone;
 
     private void FixedUpdate()
     {
@@ -15,6 +16,7 @@ public class PickPlatform : MonoBehaviour
             selectedRigidbody.velocity = dir * force * Time.fixedDeltaTime;
         }
     }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -26,6 +28,11 @@ public class PickPlatform : MonoBehaviour
         {
             selectedRigidbody.velocity = Vector2.zero;
             selectedRigidbody = null;
+        }
+
+        if (!PickableObjects.instance.canMove && inZone)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -42,5 +49,21 @@ public class PickPlatform : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("platformzone"))
+        {
+            inZone = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("platformzone"))
+        {
+            inZone = false;
+        }
     }
 }
