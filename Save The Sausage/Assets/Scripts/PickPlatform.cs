@@ -43,8 +43,8 @@ public class PickPlatform : MonoBehaviour
 
         if (hit)
         {
-            if(hit.collider.gameObject.GetComponent<Rigidbody2D>()) 
-            { 
+            if (hit.collider.gameObject.GetComponent<Rigidbody2D>())
+            {
                 return hit.collider.gameObject.GetComponent<Rigidbody2D>();
             }
         }
