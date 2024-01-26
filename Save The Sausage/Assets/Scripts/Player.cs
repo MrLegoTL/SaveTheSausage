@@ -27,10 +27,12 @@ public class Player : MonoBehaviour
     {
         Move();
         ImpulseDuration();
-        
-        if (Mathf.Abs(rb.velocity.y) < 0.1f)
+        RotatePlayer();
+        if (grounded && (Mathf.Abs(rb.velocity.y) < 0.1f || Mathf.Abs(rb.velocity.y) > 0.1f))
         {
             ActiveParticles(true);
+            var mainModule = particlePrefabs.main;
+            mainModule.simulationSpeed = Mathf.Abs(rb.velocity.x) * 0.5f;
         }
         else
         {
@@ -40,11 +42,36 @@ public class Player : MonoBehaviour
 
     public void Move()
     {
+
         if (grounded)
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
         }
         
+    }
+
+    void RotatePlayer()
+    {
+        if (grounded)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f, LayerMask.GetMask("Platform"));
+            if(hit.collider != null)
+            {
+                float inclination = Vector2.Angle(hit.normal, Vector2.up);
+                transform.rotation = Quaternion.FromToRotation(Vector2.up, hit.normal);
+            }
+            else
+            {
+                // Si no está en el suelo, deja de rotar
+                transform.rotation = Quaternion.identity;
+            }
+        }
+        else
+        {
+            // Si no está en el suelo, deja de rotar
+            transform.rotation = Quaternion.identity;
+        }
+    
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
