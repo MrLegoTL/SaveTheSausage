@@ -26,7 +26,11 @@ public class PickPlatform : MonoBehaviour
 
         if(Input.GetMouseButtonUp(0))
         {
-            selectedRigidbody.velocity = Vector2.zero;
+            if(selectedRigidbody != null)
+            {
+                selectedRigidbody.velocity = Vector2.zero;
+            }
+            
             selectedRigidbody = null;
         }
 
@@ -43,9 +47,10 @@ public class PickPlatform : MonoBehaviour
 
         if (hit)
         {
-            if (hit.collider.gameObject.GetComponent<Rigidbody2D>())
+            Rigidbody2D hitRigidbody = hit.collider.gameObject.GetComponent<Rigidbody2D>();
+            if (hitRigidbody !=null)
             {
-                return hit.collider.gameObject.GetComponent<Rigidbody2D>();
+                return hitRigidbody;
             }
         }
         return null;
