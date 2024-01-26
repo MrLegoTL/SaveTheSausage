@@ -11,12 +11,14 @@ public class Player : MonoBehaviour
     private float timeImpulse = 0f;
     [SerializeField]
     private float currentImpulse;
+    public ParticleSystem particlePrefabs;
     private Rigidbody2D rb;
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        //particlePrefabs.Stop();
         
     }
 
@@ -25,6 +27,15 @@ public class Player : MonoBehaviour
     {
         Move();
         ImpulseDuration();
+        
+        if (Mathf.Abs(rb.velocity.y) < 0.1f)
+        {
+            ActiveParticles(true);
+        }
+        else
+        {
+            ActiveParticles(false);
+        }
     }
 
     public void Move()
@@ -43,10 +54,22 @@ public class Player : MonoBehaviour
             grounded = true;
             
         }
-        else
+     
+
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+        }
+        if(collision.gameObject.tag == "WinPlatform")
+        {
+            rb.velocity = Vector2.zero;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Grounded")
         {
             grounded = false;
-            
         }
     }
 
@@ -70,5 +93,22 @@ public class Player : MonoBehaviour
         }
     }
 
+    void ActiveParticles(bool active)
+    {
+
+
+        if (particlePrefabs != null)
+        {
+            if (active && !particlePrefabs.isPlaying )
+            {
+                particlePrefabs.Play();
+            }
+            else if (!active && particlePrefabs.isPlaying )
+            {
+                particlePrefabs.Stop();
+            }
+        }
+    }
+    
     
 }
