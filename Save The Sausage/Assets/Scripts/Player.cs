@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     {
         Move();
         ImpulseDuration();
-        RotatePlayer();
+        //RotatePlayer();
         if (grounded && (Mathf.Abs(rb.velocity.y) < 0.1f || Mathf.Abs(rb.velocity.y) > 0.1f))
         {
             ActiveParticles(true);
