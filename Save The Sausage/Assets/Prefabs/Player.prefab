@@ -34,6 +34,7 @@ Transform:
   m_Children:
   - {fileID: 3413431339015481639}
   - {fileID: 3728527934798792374}
+  - {fileID: 5714463577431126668}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: -90}
 --- !u!70 &2497567128747506482
@@ -68,8 +69,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.040049553, y: 0.20304906}
-  m_Size: {x: 0.36650157, y: 1.7005026}
+  m_Offset: {x: -0.04004956, y: -0.124037705}
+  m_Size: {x: 0.36649203, y: 3.051542}
   m_Direction: 0
 --- !u!50 &6383790733792956123
 Rigidbody2D:
@@ -4977,6 +4978,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &8745687681256885092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5714463577431126668}
+  m_Layer: 0
+  m_Name: FollowCam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5714463577431126668
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8745687681256885092}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2088675588877110645}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &806457596184122964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4991,15 +5023,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 2864d21421fa2dd479d5c95bec17df40, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.09
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 2864d21421fa2dd479d5c95bec17df40, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.09
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 2864d21421fa2dd479d5c95bec17df40, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.09
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 2864d21421fa2dd479d5c95bec17df40, type: 3}
       propertyPath: m_LocalPosition.x
