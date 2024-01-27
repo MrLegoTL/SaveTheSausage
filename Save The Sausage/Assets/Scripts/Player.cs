@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float currentImpulse;
     public ParticleSystem particlePrefabs;
+    public GameObject death;
+    public GameObject sausage;
+    public float deadLimit;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -30,6 +33,7 @@ public class Player : MonoBehaviour
     {
         Move();
         ImpulseDuration();
+        CheckDeadLimit();
         //RotatePlayer();
         if (grounded && (Mathf.Abs(rb.velocity.y) < 0.1f || Mathf.Abs(rb.velocity.y) > 0.1f))
         {
@@ -90,7 +94,8 @@ public class Player : MonoBehaviour
 
         if(collision.gameObject.tag == "Enemy")
         {
-            Destroy(gameObject);
+            Death();
+            //Destroy(gameObject);
         }
         if(collision.gameObject.tag == "WinPlatform")
         {
@@ -147,5 +152,15 @@ public class Player : MonoBehaviour
     {
         transform.eulerAngles = Vector3.zero;
         anim.SetBool("Win", true);
+    }
+    void Death()
+    {
+        sausage.SetActive(false);
+        death.SetActive(true);
+    }
+
+    private void CheckDeadLimit()
+    {
+        if (transform.position.y <= deadLimit) Death();
     }
 }
