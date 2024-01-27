@@ -12,12 +12,15 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float currentImpulse;
     public ParticleSystem particlePrefabs;
+
     private Rigidbody2D rb;
+    private Animator anim;
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
         //particlePrefabs.Stop();
         
     }
@@ -45,6 +48,7 @@ public class Player : MonoBehaviour
 
         if (grounded)
         {
+            anim.SetBool("Grounded", true);
             rb.velocity = new Vector2(speed, rb.velocity.y);
         }
         
@@ -78,6 +82,7 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.tag == "Grounded")
         {
+
             grounded = true;
             
         }
@@ -89,6 +94,7 @@ public class Player : MonoBehaviour
         }
         if(collision.gameObject.tag == "WinPlatform")
         {
+            Win();
             rb.velocity = Vector2.zero;
         }
     }
@@ -137,5 +143,9 @@ public class Player : MonoBehaviour
         }
     }
     
-    
+    void Win()
+    {
+        transform.eulerAngles = Vector3.zero;
+        anim.SetBool("Win", true);
+    }
 }
