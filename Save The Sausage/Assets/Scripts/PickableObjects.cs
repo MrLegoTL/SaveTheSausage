@@ -50,13 +50,16 @@ public class PickableObjects : MonoBehaviour
 
         else
         {
+            CamaraTrack cam = FindObjectOfType<CamaraTrack>();
+
             float playerPosX = playerPos.position.x;
             initialZoom = Mathf.Lerp(initialZoom, finalZoom, retard);
             Invoke("CanMovePlayer", 0.6f);
 
-            if (playerPosX>minPos && playerPosX < maxPos)
+            if (playerPosX > minPos && playerPosX < maxPos)
             {
-                cam.transform.position = playerPos.position;
+                cam.CameraMove();
+                //cam.transform.position = playerPos.position;
             }
         }
     }
