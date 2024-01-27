@@ -1,22 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickableObjects : MonoBehaviour
 {
 
-    // Variables para el objeto que genera el raycast
-    public Camera cam;
-    public Transform positionPick;
-    public Transform objectPosition;
+    [Header("Variables para el modo construcción")]
+    public bool canMove = true;
+    public GameObject playButton;
+    public GameObject panelPlatformZone;
+    public Rigidbody2D playerRB;
 
-    // Variables para el raycast
-    public float distance;
-    public RaycastHit2D hit;
-    public LayerMask mask;
+    [Header("Variables para el modo play")]
+    public float initialZoom;
+    public float finalZoom;
+    public float retard;
+    public Transform playerPos;
 
-    // Variables para los objetos
-    public bool pickedObject;
+    Camera cam;
+    [Header("Variables de la cámara")]
+    public float minPos; 
+    public float maxPos;
 
     public static PickableObjects instance;
 
@@ -39,16 +44,33 @@ public class PickableObjects : MonoBehaviour
 
     public void RaycastObject()
     {
-        positionPick.position = cam.ScreenToWorldPoint(Input.mousePosition);
+        cam.orthographicSize = initialZoom;
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (canMove) return;
+
+        else
         {
-            if (Physics2D.Raycast(transform.position, transform.forward, distance, mask))
-            {
+            float playerPosX = playerPos.position.x;
+            initialZoom = Mathf.Lerp(initialZoom, finalZoom, retard);
+            Invoke("CanMovePlayer", 0.6f);
 
+            if (playerPosX>minPos && playerPosX < maxPos)
+            {
+                cam.transform.position = playerPos.position;
             }
         }
+    }
 
+    public void ActivatePlay()
+    {
+        canMove = false;
+        playButton.SetActive(false);
+        panelPlatformZone.SetActive(false);
+    }
+
+    public void CanMovePlayer()
+    {
+        playerRB.isKinematic = false;
     }
 
 
