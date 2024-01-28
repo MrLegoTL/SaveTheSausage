@@ -146,6 +146,29 @@ public class GameManager : MonoBehaviour
         defeatMenu.interactable = false;
         defeatMenu.blocksRaycasts = false;
     }
+    public void Pause()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Time.timeScale = 0;
+            pauseMenu.alpha = 1;
+            pauseMenu.interactable = true;
+            pauseMenu.blocksRaycasts = true;
+        }
+    }
+    public void Resume()
+    {
+        Time.timeScale = 1;
+        pauseMenu.alpha = 0;
+        pauseMenu.interactable = false;
+        pauseMenu.blocksRaycasts = false    ;
+
+    }
+
+    public void WebButton(string link)
+    {
+        Application.OpenURL(link);
+    }
 
     /// <summary>
     /// Método para salir del juego
