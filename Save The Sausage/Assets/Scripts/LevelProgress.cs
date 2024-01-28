@@ -11,7 +11,7 @@ public class LevelProgress : MonoBehaviour
     // Índice del nivel actualmente desbloqueado
     private int nivelDesbloqueado = 1;
     // Prefijo del nombre de las escenas de los niveles
-    private string nombreBaseDeEscena = "Nivel";
+    private string nombreBaseDeEscena = "Level-";
     // Referencias a los botones de nivel en la interfaz gráfica de usuario (UI)
     public Button[] botonesNivel;
 
@@ -66,7 +66,9 @@ public class LevelProgress : MonoBehaviour
         }
     }
 
-    // Método para reiniciar el progreso de los niveles (puedes usar esto para propósitos de prueba)
+    /// <summary>
+    /// Método para reiniciar el progreso de los niveles (puedes usar esto para propósitos de prueba)
+    /// </summary>
     public void ReiniciarProgreso()
     {
         nivelDesbloqueado = 1;
