@@ -8,10 +8,15 @@ public class MusicManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip gameMusic;
     public AudioClip mainMenuMusic;
+    public AudioClip victoryMusic;
+    public AudioClip defeatMusic;
+
+    public static MusicManager instance;
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (instance == null) instance = this;
+        //DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
@@ -67,6 +72,30 @@ public class MusicManager : MonoBehaviour
         audioSource.clip = mainMenuMusic;
         audioSource.Play();
         audioSource.volume = 0.4f;
+    }
+
+    /// <summary>
+    /// Ganaste
+    /// </summary>
+    [ContextMenu("Victory Music")]
+    public void PlayVictoryMusic()
+    {
+        audioSource.clip = victoryMusic;
+        audioSource.Play();
+        audioSource.volume = 0.4f;
+        audioSource.loop = false;
+    }
+
+    /// <summary>
+    /// Perdiste
+    /// </summary>
+    [ContextMenu("Defeat Music")]
+    public void PlayDefeatMusic()
+    {
+        audioSource.clip = defeatMusic;
+        audioSource.Play();
+        audioSource.volume = 0.4f;
+        audioSource.loop = false;
     }
 
 

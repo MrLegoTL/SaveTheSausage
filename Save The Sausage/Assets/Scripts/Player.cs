@@ -153,11 +153,14 @@ public class Player : MonoBehaviour
     {
         transform.eulerAngles = Vector3.zero;
         anim.SetBool("Win", true);
+        GameManager.instance.VictoryPanel();
+        MusicManager.instance.PlayVictoryMusic();
     }
     void Death()
     {
         sausage.SetActive(false);
         death.SetActive(true);
+        GameManager.instance.DefeatPanel();
     }
 
     private void CheckDeadLimit()
