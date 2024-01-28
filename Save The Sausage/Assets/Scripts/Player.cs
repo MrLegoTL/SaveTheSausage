@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
         ImpulseDuration();
         CheckDeadLimit();
         //RotatePlayer();
+        GameManager.instance.Pause();
         if (grounded && (Mathf.Abs(rb.velocity.y) < 0.1f || Mathf.Abs(rb.velocity.y) > 0.1f))
         {
             ActiveParticles(true);
@@ -155,6 +156,7 @@ public class Player : MonoBehaviour
         anim.SetBool("Win", true);
         GameManager.instance.VictoryPanel();
         MusicManager.instance.PlayVictoryMusic();
+        
     }
     void Death()
     {

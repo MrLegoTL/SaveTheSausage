@@ -15,6 +15,8 @@ public class LevelProgress : MonoBehaviour
     // Referencias a los botones de nivel en la interfaz gráfica de usuario (UI)
     public Button[] botonesNivel;
 
+    
+
     private void Start()
     {
         // Configurar la visibilidad de los botones de nivel
