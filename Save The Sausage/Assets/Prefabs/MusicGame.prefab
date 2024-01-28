@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6391501430104412916}
   - component: {fileID: 6544802285077327960}
+  - component: {fileID: 6819964159940417943}
   m_Layer: 0
   m_Name: MusicGame
   m_TagString: Untagged
@@ -128,3 +129,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6819964159940417943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8199133528649400338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bdc49f7a7059ca4983649c5464345cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 6544802285077327960}
+  gameMusic: {fileID: 8300000, guid: 9e6cbedceaff01a438de7efac0cb8f50, type: 3}
+  mainMenuMusic: {fileID: 8300000, guid: 77507424e0b87a54cbf276f03e929052, type: 3}

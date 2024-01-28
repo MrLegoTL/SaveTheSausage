@@ -30,6 +30,7 @@ public class Collectable : MonoBehaviour
             spriteRenderer.enabled = false;
             particles.Play();
             Destroy(gameObject, 0.6f);
+            GameManager.instance.countCollectables++;
         }
     }
 }
