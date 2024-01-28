@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     // Referencia al Canvas de opciones
     public GameObject canvasOpciones;
 
+    // Referencia al Canvas de niveles
+    public GameObject canvasNiveles;
+
     [Header("Menus")]
     public CanvasGroup winMenu;
     public CanvasGroup defeatMenu;
@@ -40,6 +43,11 @@ public class GameManager : MonoBehaviour
         {
             canvasOpciones.SetActive(false);
         }
+        // Desactivar el Canvas de niveles al inicio
+        if (canvasNiveles != null)
+        {
+            canvasNiveles.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -51,6 +59,18 @@ public class GameManager : MonoBehaviour
         {
             // Alternar la visibilidad del Canvas de opciones
             canvasOpciones.SetActive(!canvasOpciones.activeSelf);
+        }
+    }
+
+    /// <summary>
+    /// Método para mostrar u ocultar el Canvas de niveles
+    /// </summary>
+    public void MostrarOcultarCanvasNiveles()
+    {
+        if (canvasNiveles != null)
+        {
+            // Alternar la visibilidad del Canvas de niveles
+            canvasNiveles.SetActive(!canvasNiveles.activeSelf);
         }
     }
 
