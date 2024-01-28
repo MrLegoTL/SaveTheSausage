@@ -69,6 +69,8 @@ public class PickableObjects : MonoBehaviour
         canMove = false;
         playButton.SetActive(false);
         panelPlatformZone.SetActive(false);
+
+        HandsController.instance.handsAnimator.SetBool("drop", true);
     }
 
     public void CanMovePlayer()

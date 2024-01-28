@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
+    public float forceStartValue;
     
     // Start is called before the first frame update
     void Start()
@@ -162,5 +163,10 @@ public class Player : MonoBehaviour
     private void CheckDeadLimit()
     {
         if (transform.position.y <= deadLimit) Death();
+    }
+
+    public void ForceStart()
+    {
+        rb.velocity = new Vector2(forceStartValue, rb.velocity.y);
     }
 }
