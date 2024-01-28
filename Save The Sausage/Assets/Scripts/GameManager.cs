@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(nombreDeEscena);
         nombreDeEscenaActual = nombreDeEscena;
+        Time.timeScale = 1.0f;
     }
 
     public void VictoryPanel()

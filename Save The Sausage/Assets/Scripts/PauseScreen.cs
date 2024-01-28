@@ -33,8 +33,10 @@ public class PauseScreen : MonoBehaviour
     /// </summary>
     private void PauseGame()
     {
+
         juegoPausado = true;
         Time.timeScale = 0f; // Detener el tiempo en el juego
+
         canvasPausa.SetActive(true);
     }
 
