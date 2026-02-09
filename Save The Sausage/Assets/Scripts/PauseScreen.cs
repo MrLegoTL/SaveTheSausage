@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseScreen : MonoBehaviour
 {
     // Referencia al Canvas de pausa
     public GameObject canvasPausa;
+    
 
     private bool juegoPausado = false;
 
@@ -31,11 +33,14 @@ public class PauseScreen : MonoBehaviour
     /// <summary>
     /// Método para pausar el juego
     /// </summary>
-    private void PauseGame()
+    public void PauseGame()
     {
-
+        CanvasGroup pauseCanvas = canvasPausa.GetComponent<CanvasGroup>();
         juegoPausado = true;
         Time.timeScale = 0f; // Detener el tiempo en el juego
+        pauseCanvas.alpha = 1;
+        pauseCanvas.interactable = true;
+        pauseCanvas.blocksRaycasts = true;
 
         canvasPausa.SetActive(true);
     }

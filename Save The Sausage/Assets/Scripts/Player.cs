@@ -129,7 +129,7 @@ public class Player : MonoBehaviour
         else if (timeImpulse <= 0)
         {
             currentImpulse = 0f;
-            Debug.Log("No hay impulso");
+            //Debug.Log("No hay impulso");
         }
     }
 
